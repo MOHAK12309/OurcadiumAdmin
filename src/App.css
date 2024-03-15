@@ -1,5 +1,10 @@
 .App {
   text-align: center;
+  background-color: #0E1B23;
+  padding-top: 20px;
+  color: white;
+  font-family: "Rajdhani", sans-serif;
+  
 }
 
 .App-logo {
