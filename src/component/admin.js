@@ -80,7 +80,7 @@ function Admin() {
         LOGOUT
       </button>
       <table
-        border="1"
+        border="1px"
         bgcolor="#0D4F74"
         cellSpacing="5px"
         style={{ margin: "50px auto" }}
