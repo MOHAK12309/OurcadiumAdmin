@@ -1,8 +1,32 @@
 import React, { useEffect, useState } from "react";
-
+import { useSelector } from "react-redux";
 import axios from "axios";
-
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { getUserIdFromAuth } from "../Redux/actions/GetSellerIdFromAuthActionCreators";
 function Admin() {
+  const id = useSelector((state) => state.get_seller_profile_id.user_id);
+  const navigate = useNavigate("");
+  useEffect(() => {
+    if (!id) {
+      navigate("/login", {
+        replace: true,
+        state: {
+          signIn: true,
+        },
+      });
+    } else {
+      navigate("/");
+      // Assuming fetchData is a function you want to call when 'id' is truthy
+    }
+  }, [navigate, id]);
+
+  const dispatch = useDispatch("");
+
+  const logout = () => {
+    dispatch(getUserIdFromAuth(""));
+    navigate("/login");
+  };
   const columns = [
     { field: "id", headerName: "ID", width: 70 },
     { field: "firstName", headerName: "First name", width: 130 },
@@ -52,8 +76,26 @@ function Admin() {
   }, []);
   return (
     <>
-      <table border="1" bgcolor="#0D4F74"cellSpacing="5px" style={{margin:"auto"}}>
-        <tr>
+      <button onClick={logout} style={{ position: "fixed", top: "10px",right:"0px" }} className="login-btn">
+        LOGOUT
+      </button>
+      <table
+        border="1"
+        bgcolor="#0D4F74"
+        cellSpacing="5px"
+        style={{ margin: "50px auto" }}
+      >
+        <tr
+          bgcolor="#0D4F74"
+          style={{
+            margin: "auto",
+            position: "sticky",
+            zIndex: "99",
+            top: "10px",
+            width: "600px",
+            textAlign: "center",
+          }}
+        >
           <th>Sno.</th>
           <th>Session no.</th>
 
@@ -63,7 +105,6 @@ function Admin() {
           <th>End time</th>
           <th>Location</th>
           <th>Total players</th>
-          
         </tr>
         {data.map((item, index) => {
           return (
