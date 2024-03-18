@@ -6,8 +6,8 @@ import { getUserIdFromAuth } from '../Redux/actions/GetSellerIdFromAuthActionCre
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 function AdminLogin() {
-  const baseUrls = "https://server.youthbuzz.in";
-  const baseUrl = "http://localhost:8000";
+  const baseUrl = "https://server.youthbuzz.in";
+  const baseUrls = "http://localhost:8000";
   const dispatch=useDispatch('')
   const navigate=useNavigate("")
   const [email, setEmail] = useState("");
